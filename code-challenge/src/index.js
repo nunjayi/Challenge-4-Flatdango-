@@ -1,4 +1,4 @@
-console.log('hello')
+
 //fetch data from db.json file
 
 async function getMovieData(){
@@ -25,7 +25,7 @@ async function editMovieInfo(){
         ticketNum.innerText=firstMovie.capacity - firstMovie.tickets_sold    
 }
 
-//window.addEventListener('load',)
+
 
 //question two
 //fetch all movie titles from db.json
@@ -46,12 +46,6 @@ async function displayMovieTitles(){
     //select the ul for displaying movie titles
     let filmTitles= document.getElementById('films')
     appendChildren(filmTitles,liItems)
-   
-    
-    
-    
-
-
     return
 }
 
@@ -77,3 +71,34 @@ function renderMoviePage(){
 }
 //display the movie titles when the html page loads
 window.addEventListener('load',renderMoviePage())
+///select the buy ticket 
+
+
+////enable buying  a ticket.
+//fetching available tickets
+async function availableTickets(){
+    let res = await fetch("http://localhost:3000/films/1/tickets_sold")
+    let firstMovie = await res.json()
+    console.log(firstMovie)
+     return firstMovie
+   
+
+}
+availableTickets()
+//updating available tickets
+ function updateTickets(){
+    let button =  document.getElementById('buy-ticket')
+    console.log(button)
+    
+    
+}
+window.addEventListener('load',updateTickets())
+/*
+async function updateTickets(ticketsSold){
+    let updateData = fetch(`http://localhost:3001/tickets_sold.json`,{
+        method:"PUT",
+        body: JSON.stringify()
+
+    })
+}
+*/
